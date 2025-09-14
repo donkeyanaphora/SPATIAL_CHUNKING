@@ -1,17 +1,16 @@
 # Spatial Chunking
 
-Super simple repo for the algo that was used to group nearby OCR bounding boxes into coherent spatial chunks for downstream clustering and disclosure segmentation.
+Super simple repo for documenting the algo that was used to group OCR bounding boxes into coherent spatial chunks for downstream clustering and disclosure segmentation.
 
 ## What it does
-- **Input:** N×4 array of axis-aligned boxes [x0, y0, x1, y1] (ideally normalized to [0,1]).
+- **Input:** page level bounding box coordinates e.g. N×4 array of axis-aligned boxes [x0, y0, x1, y1] (ideally normalized to [0,1]).
 - **Output:** integer cluster labels per box (-1 = noise) suitable for grouping and post-processing.
 
-## How it works (brief)
+## How it works
 - Compute pairwise **axis gaps** (0 when boxes overlap on that axis).
 - Convert gaps to a **gap distance** (Euclidean; Manhattan also works).
-- Cluster with **HDBSCAN** using a precomputed distance matrix.  
+- Cluster with **HDBSCAN** using a gap distance matrix from previous step.  
   Use a low quantile (e.g., **5–10%**) of off-diagonal distances as a sensible cluster_selection_epsilon.
-
 
 ## Practical notes
 - **Normalize coordinates** by page width/height for portability across documents.
