@@ -1,6 +1,6 @@
 # Spatial Chunking
 
-Super simple repo for documenting the algo that was used to group OCR bounding boxes into coherent spatial chunks for downstream clustering and disclosure segmentation.
+Super simple repo for documenting the improvements on algo that was used to group OCR bounding boxes into coherent spatial chunks for downstream clustering and disclosure segmentation.
 
 ## What it does
 - **Input:** page level bounding box coordinates e.g. N×4 array of axis-aligned boxes [x0, y0, x1, y1] (ideally normalized to [0,1]).
